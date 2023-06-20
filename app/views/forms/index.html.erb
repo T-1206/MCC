@@ -1,0 +1,24 @@
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1 class="font-weight-normal mt-3">投稿一覧</h1>
+     
+    </div>
+    <div class="row justify-content-center">
+      <% @posts.each do |post| %>
+      <div class="one-post">    
+        <p class="caption"><%= post.user.name %></p>
+        <p class="caption"><%=link_to  post.title,"/forms/#{post.id}" %></p>
+        <% if post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
+        <p>
+          <%= image_tag post.image_id.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+        </p>
+        <% end %>
+        <p class="caption"><%= post.text %></p>   
+        <p class="caption"><%= "#{post.comments.count} コメント" %></p>    
+      </div>
+      <% end %>
+    </div>
+    <%= paginate @posts %>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1 class="font-weight-normal mt-3"><%= @post.title%></h1>
+     
+    </div>
+    <div class="row justify-content-center">
+      <div class="one-post">    
+        <p class="caption"><%= @post.user.name %></p>
+        <% if @post.image? %>  <!-- アップロード画像がある場合に実行する -->
+        <p>
+          <%= image_tag @post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+        </p>
+        <% end %>
+        <p class="caption"><%= @post.subject %></p> 
+            <div class="row justify-content-center">
+        <%if @comments!=nil%>
+        <% @comments.each do |post| %>
+        <div class="one-post">    
+            <p class="caption"><%= post.user.name %></p>
+            <p class="caption"><%=link_to  post.title,"/forms/#{post.id}" %></p>
+            <% if post.image %>  <!-- アップロード画像がある場合に実行する -->
+            <p>
+            <%= image_tag post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+            </p>
+            <% end %>
+            <p class="caption"><%= post.mesage %></p>   
+            <p class="caption"><%= "#{@post.comment.count} コメント" %></p>    
+        </div>
+        <% end %>
+        <%end%>
+        </div>
+        <%= link_to "Addcomment",new_storyline_talk_path(@post.id) %>   
+      </div>
+    </div>
+  </div>
+</div>

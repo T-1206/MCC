@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MCC</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if user_signed_in? %> 
+    <header>
+      <div><%= link_to '/home' do %><img src="/assets/logo.svg" alt="logo" id="logo"><% end %></div>
+      <div><%= link_to "トップ", '/home', class: "text-white" %></div>
+      <div><%= link_to "投稿する", '/forms/new', class: "text-white" %></div>
+      <div><%= link_to "投稿一覧", '/forms', class: "text-white" %></div>
+      <div><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></div> 
+      <div><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div>
+      <div><%= link_to "ユーザー", users_path, class: "text-white" %></div> 
+    </header>
+    <% end %> 
+    <%= yield %>
+  </body>
+</html>

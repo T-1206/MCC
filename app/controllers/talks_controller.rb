@@ -1,0 +1,69 @@
+class TalksController < ApplicationController
+    def new
+        @post = Talk.new
+    
+    end
+    
+    def create
+      
+        @post = Talk.new(create_params)
+        @post.user = current_user
+        @post.storyline_id=(params[:storyline_id])
+        @post.save
+    
+    end
+    
+    def  answer
+        @post = Storyline.new(answer_params)
+        @post.user= current_user
+        @post.question_id=
+        @post.save
+        redirect_to storyline_path(params[:id])
+        
+    end
+    
+    def index
+        @posts = Post.page(params[:page]).reverse_order
+    end
+    
+    
+    def show
+        @post = Storyline.find(params[:id])
+    end
+    
+    
+    def edit
+        if current_user.id==Post.find(params[:id]).user_id
+           @post = Post.find(params[:id])
+        else
+            redirect_to "/forms/#{params[:id]}"
+        end
+    end
+    
+    def update
+        @post = Post.find(params[:id])
+        if @post.update(post_params)
+            redirect_to form_path(@post.id)
+        else
+            render :edit
+        end  
+    end
+    
+    
+    def destroy
+        post = Post.find(params[:id])
+        post.destroy
+        redirect_to '/forms'
+    end
+    
+    
+    def default_url
+        'sample.jpg' 
+    end
+    
+    private
+    def create_params
+       params.require(:talk).permit(:message,:mennsion_user,:image,:storyline_id,:user_id)
+    end
+
+end
