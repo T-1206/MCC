@@ -8,7 +8,7 @@
       <div class="one-post card w-100">
         <%= link_to user_path(user) do %>
         <p class="caption h4"><%= user.name %></p>
-        <p class="caption"><%= "#{user.post.count} 投稿" %></p>
+        <p class="caption"><%= "#{user.posts.count} 投稿" %></p>
         <% end %>
       </div>
       <% end %>

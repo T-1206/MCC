@@ -1,64 +1,82 @@
 class StorylinesController < ApplicationController
-def new
+  def new
     @post = Storyline.new
 
-end
+  end
 
-def create
-  
+  def create
     @post = Storyline.new(create_params)
-    @post.user=current_user
-    puts @post.user
+    @post.user_id = current_user.id
     @post.save
+    Talkroom.create(storyline_id: @post.id, user_id: current_user.id)
+    add_user(4, @post.id)
     redirect_to storyline_path(@post.id)
 
-end
+  end
 
+  def index
+    @posts = Storyline.page(params[:page]).reverse_order
+  end
 
+  def show
+    storyline = Storyline.find(params[:id])
+    if storyline.private == true
+      if storyline.users.include?(current_user)
+        @user = storyline.users
+        @post = Storyline.find(params[:id])
+        @comments = Talk.where(storyline_id: params[:id])
 
-def index
-    @posts = Post.page(params[:page]).reverse_order
-end
-
-
-def show
-    @post = Storyline.find(params[:id])
-    @comments =Talk.find(params[:storyline_id])
-end
-
-
-def edit
-    if current_user.id==Post.find(params[:id]).user_id
-       @post = Post.find(params[:id])
+      else
+        redirect_to "/storylines"
+      end
     else
-        redirect_to "/forms/#{params[:id]}"
+      @user = storyline.users
+      @post = Storyline.find(params[:id])
+      @comments = Talk.where(storyline_id: params[:id])
     end
-end
 
-def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-        redirect_to form_path(@post.id)
+  end
+
+  def edit
+    if current_user == Storyline.find(params[:id])
+      # トークルームに所属しているユーザーを返す
+      @user = User.find(storyline_id: params[:id])
+      @post = Storyline.find(params[:id])
     else
-        render :edit
-    end  
-end
+      redirect_to "/storylines/#{params[:id]}"
+    end
+  end
 
+  def update
+    @post = Storyline.new(perams[:id])
+    if @post.update(create_params)
+      redirect_to form_path(@post.id)
+    else
+      render :edit
+    end
+  end
 
-def destroy
+  def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to '/forms'
-end
+  end
 
+  def default_url
+    'sample.jpg'
+  end
 
-def default_url
-    'sample.jpg' 
-end
+  private
 
-private
-def create_params
-   params.require(:storyline).permit(:title,:subject,:image,:user_id,:tags)
-end
+  def create_params
+    params.require(:storyline).permit(:title, :subject, :image, :user_id, :tags, :private)
+  end
 
+  public
+
+  def add_user(user, storyline)
+    @group = Storyline.find(storyline)
+    member = User.find(user)
+    @group.users << member
+  end
 end

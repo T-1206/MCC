@@ -1,37 +1,50 @@
 <div class="cover-index">
   <div class="container">
     <div class="row justify-content-center">
-      <h1 class="font-weight-normal mt-3"><%= @post.title%></h1>
-     
+      <h1 class="font-weight-normal mt-3"><%= @post.title %></h1>
+
     </div>
     <div class="row justify-content-center">
-      <div class="one-post">    
-        <p class="caption"><%= @post.user.name %></p>
+      <div class="one-post">
         <% if @post.image? %>  <!-- アップロード画像がある場合に実行する -->
-        <p>
-          <%= image_tag @post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-        </p>
+          <p>
+            <%= image_tag @post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+          </p>
         <% end %>
-        <p class="caption"><%= @post.subject %></p> 
-            <div class="row justify-content-center">
-        <%if @comments!=nil%>
-        <% @comments.each do |post| %>
-        <div class="one-post">    
-            <p class="caption"><%= post.user.name %></p>
-            <p class="caption"><%=link_to  post.title,"/forms/#{post.id}" %></p>
-            <% if post.image %>  <!-- アップロード画像がある場合に実行する -->
-            <p>
-            <%= image_tag post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-            </p>
+        <p class="caption"><%= @post.subject %></p>
+        <div class="row justify-content-center">
+          <% if @comments != nil %>
+            <% @comments.each do |post| %>
+              <div class="one-post">
+                <%= post.user.name %>
+                <% if post.image? %>  <!-- アップロード画像がある場合に実行する -->
+                  <p>
+                    <%= image_tag post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+                  </p>
+                <% end %>
+                <p class="caption"><%= post.message %></p>
+              </div>
             <% end %>
-            <p class="caption"><%= post.mesage %></p>   
-            <p class="caption"><%= "#{@post.comment.count} コメント" %></p>    
+          <% end %>
         </div>
-        <% end %>
-        <%end%>
-        </div>
-        <%= link_to "Addcomment",new_storyline_talk_path(@post.id) %>   
+        <%= link_to "Addcomment", new_storyline_talk_path(@post.id) %>
       </div>
+      <% if @post.private == true %>
+        <% if @user != nil %>
+          <% @user.each do |user| %>
+            <table>
+              <td><%= user.name %></td>
+              <% if user.profile_image_id? %>
+                <%= image_tag user.profile_image_id.half.url %>
+              <% end %>
+              <td>フォロー数: <%= user.followings.count %></td>
+              <td>フォロワー数: <%= user.followers.count %></td>
+            </table>
+          <% end %>
+        <% else %>
+          <p>ユーザーはいません</p>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
