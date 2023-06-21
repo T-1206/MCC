@@ -40,6 +40,7 @@
       <%if @post.private==true %>
       <%=link_to "AddUsers","/storylines/#{@post.id}/add_user" %>
       <%end%>
+      <%=link_to "削除","/storylines/#{@post.id}",data: {turbo: true, turbo_method: :delete } %>
       </div>
     </div>
   </div>

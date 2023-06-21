@@ -28,6 +28,9 @@
           <% end %>
         </div>
         <%= link_to "Addcomment", new_storyline_talk_path(@post.id) %>
+        <% if @post.user_id == current_user.id %>
+          <%= link_to "編集", edit_storyline_path(@post.id) %>
+        <% end %>
       </div>
       <% if @post.private == true %>
         <% if @user != nil %>

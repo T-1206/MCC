@@ -10,18 +10,9 @@ class TalksController < ApplicationController
         @post.user = current_user
         @post.storyline_id=(params[:storyline_id])
         @post.save
-    
+        redirect_to storyline_path(@post.storyline_id)
     end
-    
-    def  answer
-        @post = Storyline.new(answer_params)
-        @post.user= current_user
-        @post.question_id=
-        @post.save
-        redirect_to storyline_path(params[:id])
-        
-    end
-    
+
     def index
         @posts = Post.page(params[:page]).reverse_order
     end
@@ -63,7 +54,7 @@ class TalksController < ApplicationController
     
     private
     def create_params
-       params.require(:talk).permit(:message,:mennsion_user,:image,:storyline_id,:user_id)
+       params.require(:talk).permit(:message,:mension_user,:image,:storyline_id,:user_id)
     end
 
 end

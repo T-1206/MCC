@@ -53,9 +53,9 @@ class StorylinesController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
+    post = Storyline.find(params[:id])
     post.destroy
-    redirect_to '/forms'
+    redirect_to '/storylines'
   end
 
   def add_user_view
