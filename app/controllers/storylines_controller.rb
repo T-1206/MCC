@@ -38,22 +38,20 @@ class StorylinesController < ApplicationController
   end
 
   def edit
-    if current_user == Storyline.find(params[:id])
+    if current_user.id == Storyline.find(params[:id]).user_id
       # トークルームに所属しているユーザーを返す
-      @user = User.find(storyline_id: params[:id])
       @post = Storyline.find(params[:id])
+      @user = @post.users
+
     else
       redirect_to "/storylines/#{params[:id]}"
     end
   end
 
   def update
-    @post = Storyline.new(perams[:id])
-    if @post.update(create_params)
-      redirect_to form_path(@post.id)
-    else
-      render :edit
-    end
+    @post = Storyline.find(perams[:id])
+    @post.update(create_params)
+      redirect_to storyline_path(@post.id)
   end
 
   def destroy
