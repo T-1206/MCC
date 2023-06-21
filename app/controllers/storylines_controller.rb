@@ -49,7 +49,7 @@ class StorylinesController < ApplicationController
   end
 
   def update
-    @post = Storyline.find(perams[:id])
+    @post = Storyline.find(params[:id])
     @post.update(create_params)
       redirect_to storyline_path(@post.id)
   end
