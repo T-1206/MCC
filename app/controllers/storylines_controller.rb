@@ -9,7 +9,6 @@ class StorylinesController < ApplicationController
     @post.user_id = current_user.id
     @post.save
     Talkroom.create(storyline_id: @post.id, user_id: current_user.id)
-    add_user(4, @post.id)
     redirect_to storyline_path(@post.id)
 
   end
@@ -42,7 +41,6 @@ class StorylinesController < ApplicationController
       # トークルームに所属しているユーザーを返す
       @post = Storyline.find(params[:id])
       @user = @post.users
-
     else
       redirect_to "/storylines/#{params[:id]}"
     end
@@ -60,21 +58,29 @@ class StorylinesController < ApplicationController
     redirect_to '/forms'
   end
 
-  def default_url
-    'sample.jpg'
+  def add_user_view
+    @post = Storyline.find(params[:storyline_id])
+    @user = current_user.followers
+    @users=@post.users
+    @add_user = AddUser.new
+  end
+  def add_user
+    users=params.require(:add_user)
+    users.each do |key,value|
+      if users[key]=="0" && Storyline.find(params[:storyline_id]).users.include?(User.find(key))
+        Storyline.find(params[:storyline_id]).users.delete(User.find(key))
+      elsif users[key]=="1" && !Storyline.find(params[:storyline_id]).users.include?(User.find(key))
+        Storyline.find(params[:storyline_id]).users << User.find(key)
+
+      end
+    end
+    redirect_to "/storylines/#{params[:storyline_id]}"
+
   end
 
   private
-
   def create_params
     params.require(:storyline).permit(:title, :subject, :image, :user_id, :tags, :private)
   end
 
-  public
-
-  def add_user(user, storyline)
-    @group = Storyline.find(storyline)
-    member = User.find(user)
-    @group.users << member
-  end
 end

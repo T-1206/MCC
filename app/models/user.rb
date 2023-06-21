@@ -31,5 +31,6 @@ class User < ApplicationRecord
   end
 
   mount_uploader :profile_image_id, ImageUploader
+
 end
 

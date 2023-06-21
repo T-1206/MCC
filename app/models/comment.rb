@@ -3,3 +3,5 @@ class Comment < ApplicationRecord
     belongs_to :post,optional: true  #この行を追記
     validates :comment, presence: true, length: { maximum: 35 }
 end
+
+

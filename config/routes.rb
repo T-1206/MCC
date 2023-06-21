@@ -18,5 +18,7 @@ Rails.application.routes.draw do
 
   resources :storylines do
     resources :talks
+    get'add_user' => 'storylines#add_user_view'
+    post 'add_user' => 'storylines#add_user'
   end
 end

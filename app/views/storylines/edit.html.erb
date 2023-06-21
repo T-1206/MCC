@@ -37,7 +37,9 @@
         <div class="form-group">
           <%= f.submit "作成", class: "btn btn-primary" %> <!-- 提出ボタン -->
       <% end %>
-      <%=link_to "AddUsers","/storylines/#{@post.id}/AddUser" %>
+      <%if @post.private==true %>
+      <%=link_to "AddUsers","/storylines/#{@post.id}/add_user" %>
+      <%end%>
       </div>
     </div>
   </div>
