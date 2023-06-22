@@ -1,69 +1,70 @@
 h1 {
-    font-family: serif;
-    ;
-  }
-  
+  font-family: serif;;
+}
+
 .cover-new {
-    height: 100%;
-    width: 100%;
-    //background-image: url(/assets/sample2.jpg);
-    background-color: rgba(1, 5, 52,1);
-    background-blend-mode: lighten;
-    background-size: 100% 100%;
-    color: rgb(255, 255, 255);
-  }
-  
+  height: 100%;
+  width: 100%;
+  //background-image: url(/assets/sample2.jpg);
+  background-color: rgba(1, 5, 52, 1);
+  background-blend-mode: lighten;
+  background-size: 100% 100%;
+  color: rgb(255, 255, 255);
+}
+
 .form-control {
-    font-size: 20px;
-  }
-  
+  font-size: 20px;
+}
+
 .form-group {
-    width: 600px;   
-  }
+  width: 600px;
+}
 
 .cover-index {
-    height: 100%;
-    width: 100%;
-    //background-image: url(/assets/sample3.jpg);
-    background-color: rgba(255, 255, 255, 0.4);
-    background-blend-mode: lighten;
-    background-size: 100% 100%;
-  }
-  
+  height: 100%;
+  width: 100%;
+  //background-image: url(/assets/sample3.jpg);
+  background-color: rgba(255, 255, 255, 0.4);
+  background-blend-mode: lighten;
+  background-size: 100% 100%;
+}
+
 .one-post {
-    margin: 5px 30px;
-  }
-  
+  margin: 5px 30px;
+}
+
 .one-post img:hover {
-    transform: scale(1.2,1.2);
-  }
-  
+  transform: scale(1.2, 1.2);
+}
+
 .caption {
-    color: black;
-    font-size: 20px;
-    text-decoration: none;
-  }
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+}
+
 .cover-show {
-    height: 100%;
-    width: 100%;
-    //background-image: url(/assets/sample4.jpg);
-    background-color: rgba(255, 255, 255, 0.4);
-    background-blend-mode: lighten;
-    background-size: 100% 100%;
-  }
-  
+  height: 100%;
+  width: 100%;
+  //background-image: url(/assets/sample4.jpg);
+  background-color: rgba(255, 255, 255, 0.4);
+  background-blend-mode: lighten;
+  background-size: 100% 100%;
+}
+
 #text {
-    font-size: 18px;
-  }
+  font-size: 18px;
+}
 
 .cover-edit {
-    height: 100%;
-    width: 100%;
-    //background-image: url(/assets/sample5.jpg);
-    background-color: rgba(255, 255, 255, 0.4);
-    background-blend-mode: lighten;
-    background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+  //background-image: url(/assets/sample5.jpg);
+  background-color: rgba(255, 255, 255, 0.4);
+  background-blend-mode: lighten;
+  background-size: 100% 100%;
 }
+
 .page a,
 .next a,
 .last a,
@@ -85,11 +86,12 @@ h1 {
 .current {
   font-weight: bold;
 }
+
 .comments-index {
-    background-color: #fff;
-    border: 1px #000 solid;
-  }
-  
+  background-color: #fff;
+  border: 1px #000 solid;
+}
+
 .comment-delete {
-    margin-left: auto;
-  }
+  margin-left: auto;
+}

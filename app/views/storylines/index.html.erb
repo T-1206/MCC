@@ -1,16 +1,18 @@
+<div id ='storylines'>
+  <%= render @posts %>
+</div>
 <div class="cover-index">
   <div class="container">
     <div class="row justify-content-center">
       <h1 class="font-weight-normal mt-3">ルーム一覧</h1>
-
     </div>
     <div class="row justify-content-center">
       <% @posts.each do |post| %>
-        <%if post.private==true %>
+        <% if post.private == true %>
           <% next %>
         <% end %>
         <div class="one-post">
-          <p class="caption"><%=link_to  post.title,"/storylines/#{post.id}" %></p>
+          <p class="caption"><%= link_to post.title, "/storylines/#{post.id}" %></p>
           <% if post.image? %>  <!-- アップロード画像がある場合に実行する -->
             <p>
               <%= image_tag post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->

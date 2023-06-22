@@ -45,19 +45,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-
-
-
-
   include CarrierWave::MiniMagick
-         #800px × 600pxにリサイズします。
-    process resize_to_limit: [800, 600]
-     
-    # バージョンを作成して別のリサイズを指定し、
-    # サムネイルなどを作成することも可能です。
-    version :half do
-      process resize_to_limit: [256, 256]
-      
-    end
-     
+  # 800px × 600pxにリサイズします。
+  process resize_to_limit: [800, 600]
+
+  # バージョンを作成して別のリサイズを指定し、
+  # サムネイルなどを作成することも可能です。
+  version :half do
+    process resize_to_limit: [256, 256]
+
+  end
+
 end

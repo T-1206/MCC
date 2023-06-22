@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:form_id])
     @comment = current_user.comments.new(comment_params)
-    @comment.post_id =@post.id
+    @comment.post_id = @post.id
     if @comment.save
       redirect_to form_path(@post)
     else

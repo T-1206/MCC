@@ -14,6 +14,7 @@ class StorylinesController < ApplicationController
   end
 
   def index
+    @post= Storyline.all
     @posts = Storyline.page(params[:page]).reverse_order
   end
 
@@ -49,7 +50,7 @@ class StorylinesController < ApplicationController
   def update
     @post = Storyline.find(params[:id])
     @post.update(create_params)
-      redirect_to storyline_path(@post.id)
+    redirect_to storyline_path(@post.id)
   end
 
   def destroy
@@ -61,15 +62,16 @@ class StorylinesController < ApplicationController
   def add_user_view
     @post = Storyline.find(params[:storyline_id])
     @user = current_user.followers
-    @users=@post.users
+    @users = @post.users
     @add_user = AddUser.new
   end
+
   def add_user
-    users=params.require(:add_user)
-    users.each do |key,value|
-      if users[key]=="0" && Storyline.find(params[:storyline_id]).users.include?(User.find(key))
+    users = params.require(:add_user)
+    users.each do |key, value|
+      if users[key] == "0" && Storyline.find(params[:storyline_id]).users.include?(User.find(key))
         Storyline.find(params[:storyline_id]).users.delete(User.find(key))
-      elsif users[key]=="1" && !Storyline.find(params[:storyline_id]).users.include?(User.find(key))
+      elsif users[key] == "1" && !Storyline.find(params[:storyline_id]).users.include?(User.find(key))
         Storyline.find(params[:storyline_id]).users << User.find(key)
 
       end
@@ -79,6 +81,7 @@ class StorylinesController < ApplicationController
   end
 
   private
+
   def create_params
     params.require(:storyline).permit(:title, :subject, :image, :user_id, :tags, :private)
   end
