@@ -17,8 +17,8 @@ const appRoom = consumer.subscriptions.create("StorylineChannel", {
     return alert(data['storyline']);
   },
 
-  speak: function(message) {
-    return this.perform('speak', {storyline: message});
+  speak: function(storyline) {
+    return this.perform('speak', {storyline: storyline});
   }
 });
 

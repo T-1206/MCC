@@ -1,8 +1,7 @@
 class StorylineBroadcastJob < ApplicationJob
   queue_as :default
-  def perform(object)
-    objects=render_message(object)
-    ActionCable.server.broadcast('storyline_channel', objects)
+  def perform(storyline)
+    ActionCable.server.broadcast'storyline_channel',{storyline: render_message(storyline)}
   end
 
 
