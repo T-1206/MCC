@@ -1,6 +1,6 @@
 require "test_helper"
 
-class FormsControllerTest < ActionDispatch::IntegrationTest
+class StorylineBroadcastJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   devise_for :users
   resources :users do
     resource :relationships, only: [:create, :destroy]
@@ -12,13 +13,13 @@ Rails.application.routes.draw do
   get 'home' => 'homes#home'
 
   resources :forms do
-    resources :comments, only:[:create, :destroy]
+    resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 
   resources :storylines do
     resources :talks
-    get'add_user' => 'storylines#add_user_view'
+    get 'add_user' => 'storylines#add_user_view'
     post 'add_user' => 'storylines#add_user'
   end
 end
