@@ -10,6 +10,7 @@ class StorylineChannel < ApplicationCable::Channel
 
   def speak(data)
     #ActionCable.server.broadcast('storyline_channel', {storyline: data['storyline']})
-    Storyline.create! title: data['storyline']
+    Storyline.create!.permit(:title, :subject, :image, :user_id, :tags, :private); data['storyline']
+    Talkroom.create!.permit(:user_id, :storyline_id); data['storyline']
   end
 end

@@ -1,0 +1,8 @@
+{
+  "name": "mcc-project",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "prismarine-viewer": "^1.25.0"
+  }
+}
