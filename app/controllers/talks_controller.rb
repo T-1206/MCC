@@ -10,6 +10,7 @@ class TalksController < ApplicationController
     @post.user = current_user
     @post.storyline_id = (params[:storyline_id])
     @post.save
+    TalkBroadcastJob.perform_later(@post, 'create')
     redirect_to storyline_path(@post.storyline_id)
   end
 
@@ -32,6 +33,7 @@ class TalksController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      TalkBroadcastJob.perform_later(@post, 'update')
       redirect_to form_path(@post.id)
     else
       render :edit
@@ -41,6 +43,7 @@ class TalksController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
+    TalkBroadcastJob.perform_later(post, 'update')
     redirect_to '/forms'
   end
 

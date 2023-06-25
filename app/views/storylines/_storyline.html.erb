@@ -1,5 +1,9 @@
-<div class="storyline">
-    <p><%= storyline.users.name %></p>
+<div class="storyline" id="storyline-<%= storyline.id %>">
+  <p>
+    <% storyline.users.each do |user| %></p>
+      <p><%= user.name %></p>
+      <p>
+    <% end %></p>
     <p><%= link_to storyline.title, storyline_path(storyline.id) %></p>
 
     <div class="one-post">
@@ -11,4 +15,4 @@
       <% end %>
     </div>
     <p><%= storyline.subject %></p>
-</div>
+    </div>

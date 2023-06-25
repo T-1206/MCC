@@ -5,9 +5,11 @@ class StorylinesController < ApplicationController
   end
 
   def create
+    binding.pry
     @post = Storyline.new(create_params)
     @post.user_id = current_user.id
     @post.save
+    StorylineBroadcastJob.perform_later(@post, 'create')
     Talkroom.create(storyline_id: @post.id, user_id: current_user.id)
     redirect_to storyline_path(@post.id)
 
@@ -50,12 +52,14 @@ class StorylinesController < ApplicationController
   def update
     @post = Storyline.find(params[:id])
     @post.update(create_params)
+    StorylineBroadcastJob.perform_later(@post, 'update')
     redirect_to storyline_path(@post.id)
   end
 
   def destroy
     post = Storyline.find(params[:id])
     post.destroy
+    StorylineBroadcastJob.perform_later(post, 'update')
     redirect_to '/storylines'
   end
 
