@@ -82,3 +82,5 @@ gem 'kaminari'
 gem 'redis-rails'
 
 
+
+

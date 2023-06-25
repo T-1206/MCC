@@ -1,7 +1,7 @@
 import consumer from "channels/consumer"
 
 // appRoomという定数に格納
-consumer.subscriptions.create("StorylineChannel", {
+consumer.subscriptions.create("TalkChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
   },
@@ -11,22 +11,21 @@ consumer.subscriptions.create("StorylineChannel", {
   },
 
   received(data) {
-    const storylines = document.getElementById('storylines');
+    const talks = document.getElementById('talks');
 
     if (data['action'] === 'create') {
       // 新規投稿の場合は追加する
-      storylines.insertAdjacentHTML('beforeend', data['storyline']);
+      talks.insertAdjacentHTML('beforeend', data['talk']);
+      scrollToBottom();
     } else if (data['action'] === 'update') {
       // 編集後の表記の場合は置き換える
-      const existingStoryline = document.getElementById(`storyline-${data['storyline_id']}`);
-      if (existingStoryline) {
-        existingStoryline.innerHTML = data['storyline'];
+      const existingTalk = document.getElementById(`talk-${data['talk_id']}`);
+      if (existingTalk) {
+        existingTalk.innerHTML = data['talk'];
       }
     }
 
-    return alert(data['storyline']);
+    return alert(data['talk']);
   }
 
 });
-
-
