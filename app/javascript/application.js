@@ -2,6 +2,5 @@
 import "@hotwired/turbo-rails"
 //= require prismarine-viewer/index.js
 Turbo.session.drive = true
-import './scroll'
 import "controllers"
 import "channels"
