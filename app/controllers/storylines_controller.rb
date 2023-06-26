@@ -27,7 +27,6 @@ class StorylinesController < ApplicationController
         @user = storyline.users
         @post = Storyline.find(params[:id])
         @comments = Talk.where(storyline_id: params[:id])
-
       else
         redirect_to "/storylines"
       end

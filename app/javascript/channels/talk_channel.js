@@ -1,6 +1,6 @@
 import consumer from "channels/consumer"
-
 // appRoomという定数に格納
+
 consumer.subscriptions.create("TalkChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
@@ -12,7 +12,6 @@ consumer.subscriptions.create("TalkChannel", {
 
   received(data) {
     const talks = document.getElementById('talks');
-
     if (data['action'] === 'create') {
       // 新規投稿の場合は追加する
       talks.insertAdjacentHTML('beforeend', data['talk']);
@@ -24,8 +23,8 @@ consumer.subscriptions.create("TalkChannel", {
         existingTalk.innerHTML = data['talk'];
       }
     }
-
     return alert(data['talk']);
+
   }
 
 });

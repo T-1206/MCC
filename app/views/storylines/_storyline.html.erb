@@ -1,18 +1,1 @@
-<div class="storyline" id="storyline-<%= storyline.id %>">
-  <p>
-    <% storyline.users.each do |user| %></p>
-      <p><%= user.name %></p>
-      <p>
-    <% end %></p>
-    <p><%= link_to storyline.title, storyline_path(storyline.id) %></p>
-
-    <div class="one-post">
-
-      <% if storyline.image? %>  <!-- アップロード画像がある場合に実行する -->
-        <p>
-          <%= image_tag storyline.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-        </p>
-      <% end %>
-    </div>
-    <p><%= storyline.subject %></p>
-    </div>
+import '../javascripts/scroll';
