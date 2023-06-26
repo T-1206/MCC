@@ -11,7 +11,7 @@
           <% next %>
         <% end %>
         <div class="one-post">
-          <p class="caption"><%= link_to post.title, "/storylines/#{post.id}" %></p>
+          <p class="caption"><%= link_to post.title, "/storylines/#{post.id}", data: { turbo: false }  %></p>
           <% if post.image? %>  <!-- アップロード画像がある場合に実行する -->
             <p>
               <%= image_tag post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
