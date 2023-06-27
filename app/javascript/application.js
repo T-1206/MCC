@@ -4,3 +4,8 @@ import "@hotwired/turbo-rails"
 Turbo.session.drive = true
 import "controllers"
 import "channels"
+
+import "popper"
+
+import "bootstrap"
+
