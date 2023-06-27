@@ -5,7 +5,6 @@ class StorylinesController < ApplicationController
   end
 
   def create
-    binding.pry
     @post = Storyline.new(create_params)
     @post.user_id = current_user.id
     @post.save
@@ -86,7 +85,7 @@ class StorylinesController < ApplicationController
   private
 
   def create_params
-    params.require(:storyline).permit(:title, :subject, :image, :user_id, :tags, :private)
+    params.require(:storyline).permit(:title, :subject, :image, :user_id, :private)
   end
 
 end

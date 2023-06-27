@@ -54,7 +54,7 @@ class TalksController < ApplicationController
   private
 
   def create_params
-    params.require(:talk).permit(:message, :mension_user, :image, :storyline_id, :user_id)
+    params.require(:talk).permit(:message, :mention_user, :image, :storyline_id, :user_id)
   end
 
 end
