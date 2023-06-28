@@ -74,9 +74,11 @@ end
 
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'bootstrap', '5.3.0.alpha3'
+gem 'bootstrap'
 gem 'sass-rails', '>= 3.2'
 gem 'jquery-rails'
 gem 'devise'
 gem 'kaminari'
 gem 'redis-rails'
+
+gem "sassc-rails", "~> 2.1"
