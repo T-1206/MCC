@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_27_011936) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_28_000440) do
   create_table "Users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_011936) do
     t.string "profile"
     t.string "profile_image_id"
     t.string "grade", default: "Normal"
+    t.string "profile_background_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
