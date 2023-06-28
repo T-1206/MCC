@@ -1054,6 +1054,11 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@rails/actioncable@^7.0.5-1":
+  version "7.0.5-1"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.5-1.tgz#900ef463774b94d81d1b5fca5cf4d0fa40aec6c2"
+  integrity sha512-Dj/VTnMTUfLSqXI1+t7nmDs1wODu08mF8Ct6H4WjRxDjmgCp/OPI5x8WWdm1IEdlQApfcuMX2/UVpttKdJUFpA==
+
 "@rails/webpacker@5.4.4":
   version "5.4.4"
   resolved "https://registry.npmjs.org/@rails/webpacker/-/webpacker-5.4.4.tgz"
