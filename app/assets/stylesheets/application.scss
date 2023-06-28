@@ -14,8 +14,6 @@
  *= require_self
  */
 
-@import "bootstrap";
-
 html,
 body {
   width: 100%;
@@ -57,3 +55,5 @@ a:hover {
   position: relative;
   left: -50%;
 }
+
+@import "bootstrap";
