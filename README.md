@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+ _   _      _ _       _ 
+| | | | ___| | | ___ | |
+| |_| |/ _ \ | |/ _ \| |
+|  _  |  __/ | | (_) |_|
+|_| |_|\___|_|_|\___/(_)
+                        
