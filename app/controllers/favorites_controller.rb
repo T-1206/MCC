@@ -4,14 +4,15 @@ class FavoritesController < ApplicationController
     post = Post.find(params[:form_id])
     favorite = current_user.favorites.new(post_id: post.id)
     favorite.save
-    redirect_to form_path(post)
+    FormBroadcastJob.perform_later(post, 'create',current_user)
   end
 
   def destroy
     post = Post.find(params[:form_id])
     favorite = current_user.favorites.find_by(post_id: post.id)
     favorite.destroy
-    redirect_to form_path(post)
+    FormBroadcastJob.perform_later(post, 'destroy',current_user)
   end
+
 
 end

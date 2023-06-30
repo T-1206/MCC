@@ -16,6 +16,9 @@
             </p>
           <% end %>
           <p class="caption"><%= post.text %></p>
+          <div id="forms" class="row">
+          <%=render post%>>
+          </div>
           <p class="caption"><%= "#{post.comments.count} コメント" %></p>
         </div>
       <% end %>
