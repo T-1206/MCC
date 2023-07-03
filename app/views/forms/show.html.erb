@@ -3,10 +3,12 @@
     <div class="row">
       <h1 class="d-flex justify-content-center mt-5 mb-5">投稿詳細</h1>
     </div>
-      <div class="row">
-        <% if @post.user != nil %>
-          <p class="caption"><%= @post.user.name %></p>
-        <% end %>
+      <div class="row">  <!-- ユーザー情報を表示 -->
+        <div class ="col">
+            <% if @post.user != nil %>
+            <div class="fs-1"><%= @post.user.name %></p>
+          <% end %>
+        </div>
       </div>
         <div class="row">
           <% if @post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
