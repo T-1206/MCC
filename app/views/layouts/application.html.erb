@@ -17,7 +17,7 @@
     <div><%= link_to '/home' do %><img src="/assets/logo.svg" alt="logo" id="logo">
       <% end %></div>
     <div><%= link_to "トップ", '/home', class: "text-white" %></div>
-    <div><%= link_to "投稿する", '/forms/new', class: "text-white" %></div>
+    <div><%= link_to "投稿する", '/forms/new', class: "text-white",data: { Turbo: false }  %></div>
     <div><%= link_to "投稿一覧", '/forms', class: "text-white" %></div>
     <div><%= link_to "トークルーム一覧", '/storylines', class: "text-white" %></div>
     <div><%= link_to "トークルームを作る", '/storylines/new', class: "text-white" %></div>

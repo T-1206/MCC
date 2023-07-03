@@ -1,3 +1,7 @@
+<head>
+  <!--javascript new_preview.jsの読み込み-->
+<%= javascript_include_tag 'new_preview'%>
+</head>
 <div class="cover-new">
   <div class="container ">
     <div class="row">
@@ -21,12 +25,10 @@
             <div class="form-group fs-3">
               <label class="form-label my-3">画像</label><br>
               <%= f.label :image_id %>
-              <%= f.file_field :image_id %>
-              <% if @post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
-                <p class="my-3">
-                  <%= image_tag @post.image_id.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-                </p>
-              <% end %>
+              <%= f.file_field :image_id,id:"imageInput" %>
+              <div class="preview" id="imagePreview">
+                <img  alt="" src="">
+              </div>
             </div>
           </div>
           <div class="my-3 d-flex justify-content-end">
