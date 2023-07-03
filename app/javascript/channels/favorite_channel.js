@@ -1,19 +1,21 @@
 import consumer from "channels/consumer"
 
- // appRoomという定数に格納
+// appRoomという定数に格納
 consumer.subscriptions.create("FavoriteChannel", {
-  connected() {
-      return alert('connected');
-    // Called when the subscription is ready for use on the server
-  },
+    connected() {
+        // Called when the subscription is ready for use on the server
+    },
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+    disconnected() {
+        // Called when the subscription has been terminated by the server
+    },
 
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-      return alert(data['post']);
-  },
+    received(data) {
+        // Called when there's incoming data on the websocket for this channel
+        const post = document.getElementById(`post-${data['post_id']}`);
 
+        post.innerHTML = data['post'];
+
+
+    }
 });
