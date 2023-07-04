@@ -22,18 +22,19 @@
           <label class="form-label">画像</label><br>
           <%= f.hidden_field :image_id_cache %>
           <%= f.file_field :image_id,id:"imageInput"%><!--サムネ画像アップロード-->
-          <% if @post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
-            <p>変更前
-              <%= image_tag @post.image_id.url %><!--アップロードした画像を表示 -->
-            </p>
-          <% end %>
+
           <div class="preview" id="imagePreview">
-            <p>変更後</p>
-            <%if f.file_field :image_id==nil %>
-              <%= image_tag @post.image_id.url %>
+            <%if f.file_field :image_id==nil%>
+              <%if @post.image_id?%>
+                <p>
+                  <%= image_tag @post.image_id.url %><!--アップロードした画像を表示 -->
+                </p>
               <%else%>
-            <img  alt="" src="">
+                <img  alt="" src="">
               <%end%>
+            <%else%>
+              <img  alt="" src="">
+            <%end%>
           </div>
         </div>
         <%= f.submit '保存する', class: "btn btn-success" %><br>　<!--保存ボタン-->
