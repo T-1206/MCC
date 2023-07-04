@@ -1,7 +1,11 @@
+<head>
+  <!--javascript new_preview.jsの読み込み-->
+  <%= javascript_include_tag 'new_preview'%>
+</head>
 <div class="cover-new">
   <div class="container">
     <div class="row justify-content-center">
-      <h1 class="font-weight-normal mt-3">ルームを作る</h1>
+      <h1 class="font-weight-normal mt-3">ルームを編集</h1>
     </div>
     <div class="row justify-content-center">
       <%= form_with model: @post, url: "/storylines/#{@post.id}", data: { behavior: "storyline_speaker" }, local: true do |f| %>
@@ -22,10 +26,18 @@
           <%= f.label :image %>
           <%= f.file_field :image %>
           <% if @post.image? %>  <!-- アップロード画像がある場合に実行する -->
-            <p>
+            <p>変更前
               <%= image_tag @post.image.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
             </p>
           <% end %>
+          <div class="preview" id="imagePreview">
+            <p>変更後</p>
+            <%if f.file_field :image_id==nil %>
+              <%= image_tag @post.image.url %>
+            <%else%>
+              <img  alt="" src="">
+            <%end%>
+          </div>
         </div>
         <div class="form-group">
           <label class="form-label">private</label>

@@ -8,22 +8,23 @@
     <div class="row ">
       <% @posts.each do |post| %>
         <div class="col-lg-4 col-md-6">
-        <div class="one-post">
-          <p class="caption"><%= post.user.name %></p>
-          <p class="caption"><%= link_to post.title, "/forms/#{post.id}" %></p>
-          <% if post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
-            <p>
-              <%= image_tag post.image_id.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-            </p>
-          <% end %>
-          <p class="caption"><%= post.text %></p>
-          <div id="forms" class="row">
-          <%=render post%>>
+          <div class="one-post">
+            <p class="caption"><%= post.user.name %></p>
+            <p class="caption"><%= link_to post.title, "/forms/#{post.id}" %></p>
+            <% if post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
+              <p>
+                <%= image_tag post.image_id.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+              </p>
+            <% end %>
+            <p class="caption"><%= post.text %></p>
+            <div id="forms" class="row">
+              <%= render post %>
+            </div>
+            <p class="caption"><%= "#{post.comments.count} コメント" %></p>
           </div>
-          <p class="caption"><%= "#{post.comments.count} コメント" %></p>
         </div>
-    </div>
       <% end %>
-    <%= paginate @posts %>
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>
