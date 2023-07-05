@@ -8,14 +8,14 @@
     <div class="row ">
       <% @posts.each do |post| %>
         <div class="col-lg-4 col-md-6">
-          <div class="one-post">
-            <div class="card">
-              <p class="caption"><%= post.user.name %></p>
-              <p class="caption text-center"><%= link_to post.title, "/forms/#{post.id}" %></p>
+          <div class="one-post d-flex justify-content-around">
+            <div class="card my-3" style="width: 18rem; height: 25rem;">
+              <p class="caption card-title"><%= post.user.name %></p>
+              <p class="caption text-center card-title"><%= link_to post.title, "/forms/#{post.id}" %></p>
               <% if post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
                 <%= image_tag post.image_id.half.url, class: "card-img-top img-fluid"%><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
               <% end %>
-              <p class="caption"><%= post.text %></p>
+              <p class="caption text-truncate"><%= post.text %></p>
               <p class="caption"><%= "#{post.comments.count} コメント" %></p>
             </div>
           </div>
