@@ -2,22 +2,26 @@
 </div>
 <div class="cover-index">
   <div class="container">
-    <div class="row justify-content-center">
-      <h1 class="font-weight-normal mt-3">ルーム一覧</h1>
+    <div class="row">
+      <h1 class="fw-normal  d-flex justify-content-center mt-3">トークルーム一覧</h1>
     </div>
-    <div class="row justify-content-center">
+    <div class="row">
       <% @posts.each do |post| %>
         <% if post.private == true %>
           <% next %>
         <% end %>
-        <div class="one-post">
-          <p class="caption"><%= link_to post.title, "/storylines/#{post.id}", data: { turbo: false }  %></p>
-          <% if post.image? %>  <!-- アップロード画像がある場合に実行する -->
-            <p>
-              <%= image_tag post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-            </p>
-          <% end %>
-          <p class="caption"><%= post.subject %></p>
+        <div class="col-lg-4 col-md-6">
+          <div class="one-post d-flex justify-content-around">
+              <div class="card my-3"  style="width: 18rem">
+                <p class="caption d-flex justify-content-around"><%= link_to post.title, "/storylines/#{post.id}", data: { turbo: false }, class: "" %></p>
+                <% if post.image? %>  <!-- アップロード画像がある場合に実行する -->
+                  <div class="caption">
+                    <%= image_tag post.image.half.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+                  </div>
+                <% end %>
+                <p class="caption text-truncate"><%= post.subject %></p>
+              </div>
+          </div>
         </div>
       <% end %>
     </div>
