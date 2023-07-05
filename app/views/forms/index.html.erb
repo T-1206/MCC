@@ -17,10 +17,11 @@
               <% end %>
               <p class="caption"><%= post.text %></p>
               <p class="caption"><%= "#{post.comments.count} コメント" %></p>
+            </div>
           </div>
         </div>
-    </div>
       <% end %>
-    <%= paginate @posts %>
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>

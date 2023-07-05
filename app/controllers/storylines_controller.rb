@@ -1,21 +1,28 @@
 class StorylinesController < ApplicationController
   def new
     @post = Storyline.new
-
   end
 
   def create
     @post = Storyline.new(create_params)
     @post.user_id = current_user.id
-    @post.save
-    StorylineBroadcastJob.perform_later(@post, 'create')
-    Talkroom.create(storyline_id: @post.id, user_id: current_user.id)
-    redirect_to storyline_path(@post.id)
+    if @post.valid?
+      @post.save
+      StorylineBroadcastJob.perform_later(@post, 'create')
+      Talkroom.create(storyline_id: @post.id, user_id: current_user.id)
+      redirect_to storyline_path(@post.id)
+    else
+      # Output errors for debugging purposes
+      puts @post.errors.full_messages
+
+      # Handle the case where the object is not valid and rendering the form again
+      render :new
+    end
 
   end
 
   def index
-    @post= Storyline.all
+    @post = Storyline.all
     @posts = Storyline.page(params[:page]).reverse_order
   end
 

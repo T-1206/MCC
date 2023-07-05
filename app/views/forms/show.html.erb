@@ -6,7 +6,7 @@
       <div class="row">  <!-- ユーザー情報を表示 -->
         <div class ="col">
             <% if @post.user != nil %>
-            <div class="fs-1"><%= @post.user.name %></p>
+            <div class="fs-1"><%= @post.user.name %></div>
           <% end %>
         </div>
       </div>
@@ -23,7 +23,7 @@
         <h2>内容</h2>
         <p id="text"><%= @post.text %></p>
         <% if current_user == @post.user %>
-          <%= link_to '編集する', "/forms/#{@post.id}/edit", class: "btn btn-info mr-3" %>
+          <%= link_to '編集する', "/forms/#{@post.id}/edit",data: { Turbo: false }, class: "btn btn-info mr-3" %>
         <% end %>
         <%= link_to '投稿一覧ページへ', "/forms", class: "btn btn-dark mt-3" %>
 
