@@ -13,9 +13,13 @@
 
 <body>
 <% if user_signed_in? %>
-  <header>
-    <div><%= link_to '/home' do %><img src="/assets/logo.svg" alt="logo" id="logo">
-      <% end %></div>
+  
+<!--
+    <div>
+      <%= link_to '/home' do %><img src="/assets/logo.svg" alt="logo" id="logo">
+      <% end %>
+    </div>
+
     <div><%= link_to "トップ", '/home', class: "text-white" %></div>
     <div><%= link_to "投稿する", '/forms/new', class: "text-white",data: { Turbo: false }  %></div>
     <div><%= link_to "投稿一覧", '/forms', class: "text-white" %></div>
@@ -24,8 +28,44 @@
     <div><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></div>
     <div><%= link_to "ユーザー", users_path, class: "text-white" %></div>
     <div><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div>
+-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
-  </header>
 <% end %>
 <%= yield %>
 </body>
