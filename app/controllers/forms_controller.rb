@@ -16,7 +16,8 @@ class FormsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.page(params[:page]).reverse_order
+    @posts=Post.all.reverse_order
+    #@posts = Post.page(params[:page]).reverse_order
   end
 
   def show
