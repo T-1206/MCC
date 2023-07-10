@@ -1,14 +1,14 @@
 <div class="cover-user-show">
   <div class="container">
     <div class="row">
-      <div class="col-6">
+      <div class="">
         <% if user_signed_in? && @user == current_user %>
-          <h1 class="fw-normal mt-5 mb-5">マイページ</h1>
+          <h1 class="d-flex justify-content-center display-2 mt-5 mb-5">マイページ</h1>
         <% else %>
-          <h1 class="fw-nomal mt-5 mb-5" ><h1 class="fw-bold"><%= @user.name%></h1>さんのページ</h1>
+          <h1 class="d-flex justify-content-center display-2 fw-nomal mt-5 mb-5" ><%= @user.name%></h1>
         <% end %>
       </div>
-      <div class="col-6">
+      <div class="">
         <% if @user.profile_image_id? %>  <!-- アップロード画像がある場合に実行する -->
           <p>
             <%= image_tag @user.profile_image_id.half.url, class: "mb-3 profile-img" %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
