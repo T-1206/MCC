@@ -16,7 +16,7 @@
                 <p class="caption  card-title d-flex justify-content-around"><%= link_to post.title, "/storylines/#{post.id}", data: { turbo: false }%></p>
                 <% if post.image? %>  <!-- アップロード画像がある場合に実行する -->
                   <div class="caption">
-                    <%= image_tag post.image.half.url, class: "card-img-top img-fluid" %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+                    <%= image_tag post.image.half.url, class: "card-img img-fluid" %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
                   </div>
                 <% end %>
                 <p class="caption text-truncate"><%= post.subject %></p>
