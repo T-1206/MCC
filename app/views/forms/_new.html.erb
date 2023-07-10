@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xl-6  ">
+      <div class="">
         <%= form_with model: post, url: '/forms', local: true do |f| %>
           <div class="form-group">
             <label class="form-label fs-3 my-3">タイトル(15文字まで)</label>
@@ -21,7 +21,7 @@
             <%= f.text_area :text, rows: 10, class: "form-control" %>
           </div>
           </div>
-          <div class="col-xl-6 ">
+          <div class="">
             <div class="form-group fs-3">
               <label class="form-label my-3">画像</label><br>
               <%= f.label :image_id %>
