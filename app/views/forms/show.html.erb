@@ -12,12 +12,12 @@
       </div>
         <div class="row">
           <% if @post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
-            <p class="caption">
+            <p class="caption d-flex justify-content-center">
               <%= image_tag @post.image_id.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
             </p>
           <% end %>
         </div>
-        <p class="caption"><%= @post.title %>
+        <p class="caption d-flex justify-content-center "><%= @post.title %>
           <%= render @post%>
         </p>
         <h2>内容</h2>
