@@ -17,13 +17,13 @@
     </div>
     <div class="row ">
       <% @posts.each do |post| %>
-        <div class="col-lg-4 col-md-6">
-          <div class="one-post d-flex justify-content-around">
-            <div class="card my-3" style="width: 18rem; height: 25rem;">
+        <div class="col-lg-4 col-md-6 d-flex justify-content-around">
+          <div class=" one-post" style="width: 20rem; height: 24rem;">
+            <div class="card text-white bg-info my-3 ">
               <p class="caption card-title"><%= post.user.name %></p>
               <p class="caption text-center card-title"><%= link_to post.title, "/forms/#{post.id} " %></p>
               <% if post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
-                <%= image_tag post.image_id.half.url, class: "card-img-top img-fluid"%><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+                <%= image_tag post.image_id.half.url, class: "card-img" ,style: "width: 20rem; height: 11.375rem;"%><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
               <% end %>
               <p class="caption text-truncate"><%= post.text %></p>
               <p class="caption"><%= "#{post.comments.count} コメント" %></p>
