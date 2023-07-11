@@ -17,9 +17,9 @@
     </div>
     <div class="row ">
       <% @posts.each do |post| %>
-        <div class="col-lg-4 col-md-6">
-          <div class=" one-post d-flex justify-content-around">
-            <div class="card text-white bg-info my-3 " style="width: 20rem; height: 23rem;">
+        <div class="col-lg-4 col-md-6 d-flex justify-content-around">
+          <div class=" one-post" style="width: 20rem; height: 24rem;">
+            <div class="card text-white bg-info my-3 ">
               <p class="caption card-title"><%= post.user.name %></p>
               <p class="caption text-center card-title"><%= link_to post.title, "/forms/#{post.id} " %></p>
               <% if post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
