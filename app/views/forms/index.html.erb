@@ -5,7 +5,7 @@
 
   <!-- Bootstrap CSS -->
   <%# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> %>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">-->
 </head>
 
 <div class="cover-index">
@@ -18,12 +18,12 @@
     <div class="row">
       <% @posts.each do |post| %>
         <div class="col-lg-4 col-md-6 d-flex justify-content-around my-3">
-          <div class=" one-post" style="width: 20rem; height: 24rem;">
+          <div class=" one-post" style="width: 75%; height: 42%;">
             <div class="card text-white bg-info">
               <p class="caption card-title"><%= post.user.name %></p>
               <p class="caption text-center card-title"><%= link_to post.title, "/forms/#{post.id} " %></p>
               <% if post.image_id? %>  <!-- アップロード画像がある場合に実行する -->
-                <%= image_tag post.image_id.half.url, class: "card-img w-100" ,style: "width: 20rem; height: 11.375rem;"%><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+                <%= image_tag post.image_id.half.url, class: "" %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
               <% end %>
               <p class="caption text-truncate"><%= post.text %></p>
               <p class="caption"><%= "#{post.comments.count} コメント" %></p>
@@ -38,6 +38,8 @@
     </div>
   </div>
 </div>
+
+
 
 <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">

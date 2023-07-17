@@ -113,6 +113,8 @@ GEM
     execjs (2.8.1)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
+    font-awesome-sass (6.4.0)
+      sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -331,6 +333,7 @@ DEPENDENCIES
   carrierwave
   debug
   devise
+  font-awesome-sass (~> 6.4.0)
   importmap-rails
   jbuilder
   jquery-rails
