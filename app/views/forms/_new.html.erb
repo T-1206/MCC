@@ -22,11 +22,10 @@
             <div class="col fs-3">
               <label class="form-label my-3">画像</label>
               <br>
-              <%= f.label :image_id %>
+              <%= f.label :image %>
               <br>
-              <%= f.file_field :image_id,id:"imageInput", class:"btn btn-secondary w-100"%>
+              <%= f.file_field :image,id:"imageInput", class:"btn btn-secondary w-100",multiple:true%>
               <div class="preview" id="imagePreview">
-                <img  alt="" src="" class="img-fluid">
               </div>
             </div>
           </div>

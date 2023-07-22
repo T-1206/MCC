@@ -6,6 +6,7 @@ class FormsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    puts @post
     @post.user = current_user
     if @post.save
       redirect_to form_path(@post.id)
@@ -56,7 +57,7 @@ class FormsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :image_id, :image_id_cache, :user_id)
+    params.require(:post).permit(:title, :text, :image_id, :image_id_cache, :user_id,image: [])
   end
 
 end

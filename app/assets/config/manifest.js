@@ -4,3 +4,4 @@
 //= link_tree ../../../vendor/javascript .js
 //= link bootstrap.min.js
 //= link new_preview.js
+//=link application.js
