@@ -19,6 +19,8 @@
       <% @posts.each do |post| %>
         <div class="col-lg-4 col-md-6 d-flex justify-content-around my-3">
           <div class=" one-post" style="width: 75%; height: 42%;">
+          <!--<%= image_tag 'default.png',  class:""%>-->
+          <div class="">
             <div class="card text-white bg-info">
               <p class="caption card-title"><%= post.user.name %></p>
               <p class="caption text-center card-title"><%= link_to post.title, "/forms/#{post.id} " %></p>
@@ -33,6 +35,7 @@
                 <%= render post%>
               </p>
             </div>
+          </div>
           </div>
         </div>
       <% end %>
