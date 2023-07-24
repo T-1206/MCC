@@ -23,10 +23,10 @@
     </div>
 
     <div><%= link_to "トップ", '/home', class: "text-white" %></div>
-    <div><%= link_to "投稿する", '/forms/new', class: "text-white",data: { Turbo: true}  %></div>
-    <div><%= link_to "投稿一覧", '/forms', class: "text-white" %></div>
+    <div><%= link_to "投稿する", '/forms/new', class: "text-white",data: { turbo: false }  %></div>
+    <div><%= link_to "投稿一覧", '/forms', class: "text-white",data: { turbo: false } %></div>
     <div><%= link_to "トークルーム一覧", '/storylines', class: "text-white" %></div>
-    <div><%= link_to "トークルームを作る", '/storylines/new', class: "text-white",data: { Turbo: false } %></div>
+    <div><%= link_to "トークルームを作る", '/storylines/new', class: "text-white",data: { turbo: false } %></div>
     <div><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></div>
     <div><%= link_to "ユーザー", users_path, class: "text-white" %></div>
     <div><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div>
@@ -40,11 +40,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <!--<%= link_to "投稿する", '/forms/new', class: "text-white nav-link active",data: { Turbo: false }  %> -->
+          <!--<%= link_to "投稿する", '/forms/new', class: "text-white nav-link active",data: { turbo: false }  %> -->
           <a class="nav-link active btn"  data-toggle="modal" data-target="#formModal" >投稿する</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/forms">投稿一覧</a>
+          <a class="nav-link active" href="/forms" data-turbo="false">投稿一覧</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,7 +61,7 @@
           プロフィール
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><%= link_to "マイページ", user_path(current_user.id), class: "dropdown-item" ,data: { Turbo: false } %></li>
+            <li><%= link_to "マイページ", user_path(current_user.id), class: "dropdown-item" ,data: { turbo: false } %></li>
             <li><%= link_to "ユーザー", users_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
