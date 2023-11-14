@@ -180,6 +180,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.2-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.23.0)
     parser (3.2.2.3)
@@ -287,6 +289,7 @@ GEM
     sqlite3 (1.6.3-arm64-darwin)
     sqlite3 (1.6.3-x64-mingw-ucrt)
     sqlite3 (1.6.3-x86_64-darwin)
+    sqlite3 (1.6.3-x86_64-linux)
     ssrf_filter (1.1.1)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
@@ -325,6 +328,7 @@ PLATFORMS
   arm64-darwin-22
   x64-mingw-ucrt
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
